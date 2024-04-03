@@ -1,5 +1,5 @@
-import prisma from '@/utils/prisma'
-import { LancamentoProps } from '@/utils/types'
+import prisma from '../utils/prisma'
+import { LancamentoProps } from '../utils/types'
 
 const buscarTiposLancamento = async () => {
   try {

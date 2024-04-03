@@ -1,5 +1,5 @@
-import prisma from '@/utils/prisma'
-import { CategoriaProps } from '@/utils/types'
+import prisma from '../utils/prisma'
+import { CategoriaProps } from '../utils/types'
 
 export default class CategoriaService {
   buscarListaDeCategorias = async (idUsuario: string) => {

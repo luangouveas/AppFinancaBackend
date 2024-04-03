@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
-import { CategoriaProps, LancamentoProps, UsuarioProps } from '@/utils/types'
+import { CategoriaProps, LancamentoProps, UsuarioProps } from './utils/types'
 import {
   buscarLancamentosRecentes,
   cadastrarLancamento,

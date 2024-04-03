@@ -1,7 +1,7 @@
-import prisma from '@/utils/prisma'
+import prisma from '../utils/prisma'
 import { hash, compare } from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { UsuarioProps } from '@/utils/types'
+import { UsuarioProps } from '../utils/types'
 
 export default class UsuarioService {
   buscarDadosUsuario = async (id: string) => {
