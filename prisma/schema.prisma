@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model DadosUsuario{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  nome String
+  email String
+  hashSenha String
+  saldo Float
+  lancamentos Lancamento[]
+  categorias Categoria[]
+  @@map("DadosUsuario")
+}
+
+model TipoLancamento {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  nome String
+  codigoTipoLancamento Int @unique
+  lancamentos Lancamento[]
+  @@map("TipoLancamento")
+}
+
+model Categoria {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  nome String
+  created_at DateTime @default(now())
+  lancamentos Lancamento[]
+  idUsuario String @db.ObjectId
+  usuario DadosUsuario @relation(fields: [idUsuario], references: [id])
+  @@map("Categoria")
+}
+
+model Lancamento {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    usuario DadosUsuario @relation(fields: [idUsuario], references: [id])
+    idUsuario String @db.ObjectId   
+    codigoTipoLancamento Int
+    tipoLancamento TipoLancamento @relation(fields: [codigoTipoLancamento], references: [codigoTipoLancamento])
+    idCategoria String @db.ObjectId
+    categoria Categoria @relation(fields: [idCategoria], references: [id])
+    nome String
+    valor Float
+    dataLancamento DateTime
+    created_at DateTime? @default(now())
+    @@map("Lancamento")
+}
+
